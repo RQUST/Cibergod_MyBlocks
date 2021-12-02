@@ -7,15 +7,7 @@ AMyPlayerController::AMyPlayerController()
     // displaying the cursor or hiding the cursor
     ShowMouseCursor = true;
 
-    bShowMouseCursor = true;
-
-    //включаем реакцию на клик мышкой
-
-    bEnableClickEvents = true;
-
-    //показываем курсор на экране
-
-    DefaultMouseCursor = EMouseCursor::Crosshairs;
+    ShowHideCursor();
 }
 
 void AMyPlayerController::ShowHideCursor()
