@@ -9,18 +9,23 @@ AMyBox::AMyBox()
     PrimaryActorTick.bCanEverTick = true;
 
     CreateBlock();
+    LoadListMaterial();
 }
 
 // Called when the game starts or when spawned
 void AMyBox::BeginPlay()
 {
     Super::BeginPlay();
+
+    RandomColor();
 }
 
 // Called every frame
 void AMyBox::Tick(float DeltaTime)
 {
     Super::Tick(DeltaTime);
+
+    BlockMesh->SetMaterial(0, MyListMaterial[IndexCurrentMateril]);
 }
 
 void AMyBox::CreateBlock()
@@ -31,14 +36,39 @@ void AMyBox::CreateBlock()
 
     class UStaticMesh* BlocStatickMesh;
 
-    BlocStatickMesh =
-        ConstructorHelpers::FObjectFinderOptional<UStaticMesh>(TEXT("StaticMesh'/Game/Shape_Cube.Shape_Cube'")).Get();
+    BlocStatickMesh = ConstructorHelpers::FObjectFinderOptional<UStaticMesh>(TEXT("StaticMesh'/Game/Shape_Cube.Shape_Cube'")).Get();
 
-    BlockMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BlockMesh0"));  
+    BlockMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BlockMesh0"));
     BlockMesh->SetStaticMesh(BlocStatickMesh);
-      
-    tempMaterial = ConstructorHelpers::FObjectFinderOptional<UMaterial>(TEXT("Material'/Game/Material/RedMaterial.RedMaterial'")).Get();
 
-    BlockMesh->SetMaterial(0, tempMaterial);  
-    BlockMesh->AttachTo(DummyRoot);  
+    //tempMaterial = ConstructorHelpers::FObjectFinderOptional<UMaterial>(TEXT("Material'/Game/Material/RedMaterial.RedMaterial'")).Get();
+
+    //BlockMesh->SetMaterial(0, tempMaterial);
+    BlockMesh->AttachTo(DummyRoot);
+}
+  
+/// function for loading a list of materials
+void AMyBox::LoadListMaterial()
+
+{
+    tempMaterial = ConstructorHelpers::FObjectFinderOptional<UMaterial>(TEXT("Material'/Game/Material/0.0'")).Get();
+    MyListMaterial.Add(tempMaterial);
+
+    tempMaterial = ConstructorHelpers::FObjectFinderOptional<UMaterial>(TEXT("Material'/Game/Material/BlueMaterial.BlueMaterial'")).Get();
+    MyListMaterial.Add(tempMaterial);
+
+    tempMaterial = ConstructorHelpers::FObjectFinderOptional<UMaterial>(TEXT("Material'/Game/Material/RedMaterial.RedMaterial'")).Get();
+    MyListMaterial.Add(tempMaterial);
+
+    tempMaterial = ConstructorHelpers::FObjectFinderOptional<UMaterial>(TEXT("Material'/Game/Material/WhiteMaterial.WhiteMaterial'")).Get();
+    MyListMaterial.Add(tempMaterial);
+   
+    tempMaterial = ConstructorHelpers::FObjectFinderOptional<UMaterial>(TEXT("Material'/Game/Material/YellowMaterial.YellowMaterial'")).Get();
+    MyListMaterial.Add(tempMaterial);
+}
+
+void AMyBox::RandomColor() 
+{  
+    int32 ListMaterialLengh = MyListMaterial.Num() - 1;
+    IndexCurrentMateril = FMath::RandRange(1, ListMaterialLengh);
 }
