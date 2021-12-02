@@ -4,24 +4,24 @@
 
 AMyPlayerController::AMyPlayerController()
 {
-    //отображаем курсор или прячем курсор
+    // displaying the cursor or hiding the cursor
     ShowMouseCursor = true;
 }
 
 void AMyPlayerController::ShowHideCursor()
 {
-    //если стоит галка то курсор отображаеться
+    // if there is a jackdaw, the cursor is displayed
     if (ShowMouseCursor)
     {
-        bShowMouseCursor = true;                  //включаем показ курсора
-        bEnableClickEvents = true;                //разрешаем событие щелчек мышкой по объектам
-        DefaultMouseCursor = EMouseCursor::Hand;  //задаем изображение курсора
+        bShowMouseCursor = true;                  // enabling cursor display
+        bEnableClickEvents = true;                // enabling the mouse click event on objects
+        DefaultMouseCursor = EMouseCursor::Hand;  // setting the cursor image
     }
     else
     {
-        ///прячем курсор мыши
-        bShowMouseCursor = false;                 //включаем показ курсора
-        bEnableClickEvents = false;               //разрешаем событие щелчек мышкой по объектам
-        DefaultMouseCursor = EMouseCursor::Hand;  //задаем изображение курсора
+        /// hiding the mouse cursor
+        bShowMouseCursor = false;
+        bEnableClickEvents = false;
+        DefaultMouseCursor = EMouseCursor::Hand;
     }
 }

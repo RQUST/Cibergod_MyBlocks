@@ -20,6 +20,6 @@ public:
     bool ShowMouseCursor;
 
 private:
-    // отобрахает или пр€чет мышку
+    // displays or hides the cursor
     void ShowHideCursor();
 };
