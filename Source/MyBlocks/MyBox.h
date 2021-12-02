@@ -34,11 +34,14 @@ public:
 
     void CreateBlock();
 
-    UPROPERTY() int32 IndexCurrentMateril; 
-     
+    UPROPERTY() int32 IndexCurrentMateril;
+
     TArray<class UMaterial*> MyListMaterial;
- 
+
     void LoadListMaterial();
- 
+
     void RandomColor();
+
+    UFUNCTION()
+    void BlockClicked(UPrimitiveComponent* ClickedComp, FKey inKey);
 };
