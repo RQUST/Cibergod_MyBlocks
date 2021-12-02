@@ -7,11 +7,13 @@
 #include "MyGameMode.generated.h"
 
 /**
- * 
+ *
  */
 UCLASS()
 class MYBLOCKS_API AMyGameMode : public AGameModeBase
 {
-	GENERATED_BODY()
-	
+    GENERATED_BODY()
+
+public:
+    AMyGameMode();
 };

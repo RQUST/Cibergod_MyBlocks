@@ -2,4 +2,12 @@
 
 
 #include "MyGameMode.h"
+#include "MyPlayerController.h" 
 
+AMyGameMode::AMyGameMode() 
+{
+    //there is no default player
+    DefaultPawnClass = NULL;
+
+    PlayerControllerClass = AMyPlayerController::StaticClass();
+}
