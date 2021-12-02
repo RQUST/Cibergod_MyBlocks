@@ -7,11 +7,19 @@
 #include "MyPlayerController.generated.h"
 
 /**
- * 
+ *
  */
 UCLASS()
 class MYBLOCKS_API AMyPlayerController : public APlayerController
 {
-	GENERATED_BODY()
-	
+    GENERATED_BODY()
+
+public:
+    AMyPlayerController();
+
+    bool ShowMouseCursor;
+
+private:
+    // отобрахает или пр€чет мышку
+    void ShowHideCursor();
 };
