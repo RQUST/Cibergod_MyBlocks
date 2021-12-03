@@ -1,6 +1,8 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "MyBox.h"
+#include "MyMap.h"
+#include "Components/BoxComponent.h"
 
 // Sets default values
 AMyBox::AMyBox()
@@ -78,5 +80,5 @@ void AMyBox::RandomColor()
 
 void AMyBox::BlockClicked(UPrimitiveComponent* ClickedComp, FKey inKey)
 {
-    RandomColor();
+    OwnMap->SelectBlock(X, Y);
 }

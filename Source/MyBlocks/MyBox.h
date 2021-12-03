@@ -34,7 +34,8 @@ public:
 
     void CreateBlock();
 
-    UPROPERTY() int32 IndexCurrentMateril;
+    UPROPERTY()
+    int32 IndexCurrentMateril;
 
     TArray<class UMaterial*> MyListMaterial;
 
@@ -44,4 +45,9 @@ public:
 
     UFUNCTION()
     void BlockClicked(UPrimitiveComponent* ClickedComp, FKey inKey);
+
+    //Переменные для хранение позиции данного блока в сетке
+    UPROPERTY() int32 X;               //позиция по Х
+    UPROPERTY() int32 Y;               //позиция по Y
+    UPROPERTY() class AMyMap* OwnMap;  //Карта кто создал блок
 };

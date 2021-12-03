@@ -9,22 +9,26 @@
 UCLASS()
 class MYBLOCKS_API AMyMap : public AActor
 {
-	GENERATED_BODY()
-	
-public:	
-	// Sets default values for this actor's properties
-	AMyMap();
+    GENERATED_BODY()
+
+public:
+    // Sets default values for this actor's properties
+    AMyMap();
 
 protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
+    // Called when the game starts or when spawned
+    virtual void BeginPlay() override;
 
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
+public:
+    // Called every frame
+    virtual void Tick(float DeltaTime) override;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MySpawnPoint", meta = (AllowPrivateAccess = "true"))
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MySpawnPoint", meta = (AllowPrivateAccess = "true"))
     class UBoxComponent* SpawnPoint;
 
-	 void GenerateMap();
+    void GenerateMap();
+
+    // a function that will get the coordinates of the block that the player clicked on
+    UFUNCTION()
+    void SelectBlock(int32 X, int32 Y);
 };

@@ -4,11 +4,11 @@
 #include "MyBox.h"
 #include "Components/BoxComponent.h"
 
-//размер поля игрока
-const int32 COL = 36;  //количество блоков по горизонтали
-const int32 ROW = 22;  //количество блоков по вертикали
+// player's field size
+const int32 COL = 36;  // number of blocks horizontally
+const int32 ROW = 22;  // number of blocks vertically
 
-//создание поля нужного размера
+// creating a field of the desired size
 class AMyBox* Map[COL][ROW];
 
 // Sets default values
@@ -38,37 +38,52 @@ void AMyMap::Tick(float DeltaTime)
 
 void AMyMap::GenerateMap()
 {
-    //координаты ширины и высоты блока
+    // coordinates of the width and height of the block
     float DZ = 1.05f, DY = 1.05f;
 
-    //получаем точку начала координат сохраняем для востановления в будущем
+    // we get the origin point and save it for restoration in the future
     FVector StartPointtmp = SpawnPoint->Bounds.Origin;
-    //переменная по которой будем расчитывать данные блоки
+    // the variable by which we will calculate these blocks
     FVector StartPoint = SpawnPoint->Bounds.Origin;
-    FRotator SpawnRotate = FRotator(0, 0, 0);  //задаем позицию вращения блоков
+    FRotator SpawnRotate = FRotator(0, 0, 0);  // setting the rotation position of the blocks
 
-    FActorSpawnParameters SpawnParam;    //настраиваем обьект создания актеров
-    SpawnParam.Owner = this;             //указываем кто создает обьект
-    SpawnParam.Instigator = GetInstigator();  //кто являеться инициатором создания блока
+    FActorSpawnParameters SpawnParam;         // setting up an object for creating actors
+    SpawnParam.Owner = this;                  // specifying who creates the object
+    SpawnParam.Instigator = GetInstigator();  // who is the initiator of the block creation
 
     class UWorld* W = GetWorld();
     if (W)
     {
-        //двигаемся вверх по вертикали
+        // moving up vertically
         for (int32 yy = 0; yy < ROW; yy++)
         {
             for (int32 xx = 0; xx < COL; xx++)
             {
-                //создаем блок и сохраняем его в масив
+                // creating a block and saving it to an array
                 Map[xx][yy] = GetWorld()->SpawnActor<AMyBox>(StartPoint, SpawnRotate);
- 
-                //расчитываем нокую координату по вертикали
+
+                Map[xx][yy]->X = xx;         // position by X
+                Map[xx][yy]->Y = yy;         // position by Y
+                Map[xx][yy]->OwnMap = this;  // Map who created the block
+
+                // calculating the new vertical coordinate
                 StartPoint.Y += DY;
             }
-            //возвращаем блоки на начальную позицию
+            // returning the blocks to the initial position
             StartPoint.Y = StartPointtmp.Y;
-            //задаем позицию по вертикали
+            // setting the vertical position
             StartPoint.Z += DZ;
         }
-    }
+   }
+}
+
+
+// a function that will get the coordinates of the block that the player clicked on
+void AMyMap::SelectBlock(int32 X, int32 Y)
+{
+    // zeroing the block from the Map class
+
+    Map[X][Y]->IndexCurrentMateril = 0;
+
+ 
 }
