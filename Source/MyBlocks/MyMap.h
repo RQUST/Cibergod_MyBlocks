@@ -26,4 +26,5 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MySpawnPoint", meta = (AllowPrivateAccess = "true"))
     class UBoxComponent* SpawnPoint;
 
+	 void GenerateMap();
 };
