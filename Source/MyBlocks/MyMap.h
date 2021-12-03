@@ -31,4 +31,19 @@ public:
     // a function that will get the coordinates of the block that the player clicked on
     UFUNCTION()
     void SelectBlock(int32 X, int32 Y);
+
+    //во время обновления экрана сдвигаем блоки вниз если они есть
+    void MoveBlockDown();
+
+    //провека есть ли пустые блоки
+    bool SerchZeroBloks();
+
+    //текст с количеством очков опыта
+    class UTextRenderComponent* MyScoreText;
+
+    //функция создания текста
+    void GreateMyScoreText();
+
+    //количество блоков разбитых
+    int32 ScorePlayer = 0;
 };
