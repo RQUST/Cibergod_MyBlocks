@@ -38,7 +38,7 @@ void AMyBox::CreateBlock()
 
     class UStaticMesh* BlocStatickMesh;
 
-    BlocStatickMesh = ConstructorHelpers::FObjectFinderOptional<UStaticMesh>(TEXT("StaticMesh'/Game/Shape_Cube.Shape_Cube'")).Get();
+    BlocStatickMesh = ConstructorHelpers::FObjectFinderOptional<UStaticMesh>(TEXT("StaticMesh'/Game/tinker.tinker'")).Get();
 
     BlockMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BlockMesh0"));
     BlockMesh->SetStaticMesh(BlocStatickMesh);

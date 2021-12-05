@@ -149,8 +149,7 @@ void AMyMap::BeginPlay()
 void AMyMap::Tick(float DeltaTime)
 {
     Super::Tick(DeltaTime);
-
-    MoveBlockDown();
+     
 }
 
 void AMyMap::GenerateMap()
