@@ -155,7 +155,7 @@ void AMyMap::Tick(float DeltaTime)
 void AMyMap::GenerateMap()
 {
     // coordinates of the width and height of the block
-    float DZ = 1.05f, DY = 1.05f;
+    float DZ = 120.5f, DY = 120.5f;
 
     // we get the origin point and save it for restoration in the future
     FVector StartPointtmp = SpawnPoint->Bounds.Origin;
