@@ -220,7 +220,7 @@ void AMyMap::SelectBlock(int32 X, int32 Y)
         ScorePlayer += DeletePretindent.Num();
 
         //обновляем текстовые поля
-        MyScoreText->SetText(FText::AsNumber(ScorePlayer));
+     //   MyScoreText->SetText(FText::AsNumber(ScorePlayer));
     }
 
     while (SerchZeroBloks())
